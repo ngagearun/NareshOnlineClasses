@@ -5,22 +5,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
-public class DraggableDemo {
+import com.reusable.BaseClass;
+
+public class DraggableDemo extends BaseClass{
 
 	public static void main(String[] args) throws InterruptedException {
 	
-		
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Lenovo\\Downloads\\chromedriver.exe");
-		ChromeDriver driver=new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.get("https://jqueryui.com/draggable/");		
+	    launchapp("https://jqueryui.com/draggable/");			
 		Thread.sleep(3000);			
-		Actions action=new Actions(driver);
-		Thread.sleep(3000);	
-		driver.switchTo().frame(0);
-		
-		WebElement draggable =driver.findElement(By.id("draggable"));
-		action.dragAndDropBy(draggable,235,67).perform();
+		frame(0);
+		draggable(By.id("draggable"), 235, 67);
 		Thread.sleep(3000);
 		driver.close();
 

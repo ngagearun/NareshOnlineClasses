@@ -13,7 +13,7 @@ public class SikuliHandlingCode{
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Lenovo\\Downloads\\chromedriver.exe");
 		ChromeDriver driver=new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://www.naukari.com/");
+		driver.get("https://www.naukri.com/");
 		
 		driver.findElement(By.id("wdgt-file-upload")).click();
 		Thread.sleep(3000);
