@@ -3,6 +3,8 @@ public class CheckingAccBalanceWithVariables {
 	
 	static int accbalance=10000;
 	
+	
+	
 	void withdraw(){
 		accbalance =accbalance-2000;
 		System.out.println(accbalance);

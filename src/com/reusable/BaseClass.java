@@ -1,19 +1,30 @@
 package com.reusable;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class BaseClass {
 	
-	public static ChromeDriver driver;
+	public static WebDriver driver;
+	
+	static String browsername="chrome";
 	
 	public static void launchapp(String appurl){	
-		
+		 if(browsername.equalsIgnoreCase("chrome")){
 			System.setProperty("webdriver.chrome.driver", "C:\\Users\\Lenovo\\Downloads\\chromedriver.exe");
 			driver=new ChromeDriver();
+		 }else  if(browsername.equalsIgnoreCase("firefox")){
+			 System.setProperty("webdriver.gecko.driver", "C:\\Users\\Lenovo\\Downloads\\geckodriver.exe");
+				driver=new FirefoxDriver(); 
+		 }
 			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			driver.get(appurl);		
 	}
 	
