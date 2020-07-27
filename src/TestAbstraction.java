@@ -12,9 +12,9 @@ public class TestAbstraction {
 		Remote rem;
 		rem=new TVRemote();
 		
-		rem.powerswitch(powerstatus)
+		
 		rem=new ACRemote();
-		rem.powerswitch(powerstatus)
+		
 		
 		
 		

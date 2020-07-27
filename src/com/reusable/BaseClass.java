@@ -1,9 +1,15 @@
 package com.reusable;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -12,14 +18,18 @@ import org.openqa.selenium.support.ui.Select;
 public class BaseClass {
 	
 	public static WebDriver driver;
+	public static List<WebElement> ele=driver.findElements(By.xpath("//*[@id='ui-id-1']/li"));
+	public static By draggable=By.id("draggable"); 
+	//static String browsername="chrome";
 	
-	static String browsername="chrome";
-	
-	public static void launchapp(String appurl){	
-		 if(browsername.equalsIgnoreCase("chrome")){
+	public static void launchapp(String appurl) throws IOException{	
+		FileInputStream fi=new FileInputStream("C:\\Users\\Lenovo\\Documents\\NareshTraining\\configuration.properties");
+		Properties p=new Properties();
+		p.load(fi);		
+		 if(p.getProperty("browsername").equalsIgnoreCase("chrome")){
 			System.setProperty("webdriver.chrome.driver", "C:\\Users\\Lenovo\\Downloads\\chromedriver.exe");
 			driver=new ChromeDriver();
-		 }else  if(browsername.equalsIgnoreCase("firefox")){
+		 }else  if(p.getProperty("browsername").equalsIgnoreCase("firefox")){
 			 System.setProperty("webdriver.gecko.driver", "C:\\Users\\Lenovo\\Downloads\\geckodriver.exe");
 				driver=new FirefoxDriver(); 
 		 }
@@ -33,8 +43,12 @@ public class BaseClass {
 	}
 	
 	public static void sendText(By locatorname,String text){
+		try{
 		driver.findElement(locatorname).clear();
 		driver.findElement(locatorname).sendKeys(text);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 	public static String readtext(By locatorname){

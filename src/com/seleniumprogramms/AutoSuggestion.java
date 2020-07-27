@@ -1,5 +1,6 @@
 package com.seleniumprogramms;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -9,18 +10,18 @@ import com.reusable.BaseClass;
 
 public class AutoSuggestion extends BaseClass {
 
-	public static void main(String[] args) throws InterruptedException{
+	public static void main(String[] args) throws InterruptedException, IOException{
 		
-		launchapp("https://jqueryui.com/autocomplete/");				
+		launchapp("www.jqueryui.com/autocomplete/");				
 		frame(0);
 		sendText(By.id("tags"), "A");
-	   List<WebElement> autosuggestion=driver.findElements(By.xpath("//*[@id='ui-id-1']/li"));
 	   
-	   for(int i=0;i<autosuggestion.size();i++){
+	   
+	   for(int i=0;i<ele.size();i++){
 		   
-		   String text=autosuggestion.get(i).getText();
+		   String text=ele.get(i).getText();
 		   if(text.equalsIgnoreCase("BASIC")){
-			   autosuggestion.get(i).click();
+			   ele.get(i).click();
 			   break;
 		   }
 		   
