@@ -18,8 +18,8 @@ import org.openqa.selenium.support.ui.Select;
 public class BaseClass {
 	
 	public static WebDriver driver;
-	public static List<WebElement> ele=driver.findElements(By.xpath("//*[@id='ui-id-1']/li"));
-	public static By draggable=By.id("draggable"); 
+//	public static List<WebElement> ele=driver.findElements(By.xpath("//*[@id='ui-id-1']/li"));
+//	public static By draggable=By.id("draggable"); 
 	//static String browsername="chrome";
 	
 	public static void launchapp(String appurl) throws IOException{	
